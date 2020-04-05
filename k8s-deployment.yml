@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: internal_apis
+  name: internal-apis
   labels:
-    app: internal_apis
-    type: back-end
+    app: internal-apis
+    type: back-end-apis
 spec:
   template:
     metadata:
-      name: internal_apis
+      name: internal-apis
       labels:
-        app: internal_apis
-        type: back-end
+        app: internal-apis
+        type: back-end-apis
     spec:
       containers:
-      - name: lti-test
-        image: gcr.io/data-warehouse-project-235018/internal_apis:1.0
-  replicas: 1
+      - name: internal-apis
+        image: gcr.io/data-warehouse-project-235018/internal-apis:1.0
+  replicas: 3
   selector:
     matchLabels:
-      type: back-end
+      type: back-end-apis
