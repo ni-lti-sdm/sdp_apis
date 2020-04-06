@@ -17,23 +17,20 @@ defmodule Apis.AuthPlug do
   end
 
   def call(conn, _opts) do
-    api_key = get_api_key(conn)
-    case api_key_valid?(api_key) do
-      :ok ->
-        conn
-
-      :unauthorized ->
-        handle_unauthorized(conn)
-    end
+    api_key_valid?(conn, get_api_key(conn))
   end
 
-  defp handle_unauthorized(conn) do
+  defp api_key_valid?(conn, @whitelisted_api_key) do
+    conn
+  end
+
+  defp api_key_valid?(conn, _) do
     conn
     |> send_resp(401, "Unauthorized")
     |> halt()
   end
 
-  def get_api_key(conn) do
+  defp get_api_key(conn) do
     header_apikey =
       Enum.find(conn.req_headers, fn {key, _} -> @http_header_api_key == String.downcase(key) end)
 
@@ -42,8 +39,5 @@ defmodule Apis.AuthPlug do
       nil -> nil
     end
   end
-
-  def api_key_valid?(@whitelisted_api_key), do: :ok
-  def api_key_valid?(_), do: :unauthorized
 
 end
