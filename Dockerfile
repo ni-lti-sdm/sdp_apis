@@ -1,4 +1,4 @@
-FROM elixir:1.9.4-alpine as build
+FROM elixir:1.10-alpine as build
 
 # install build dependencies
 RUN apk add --update git build-base nodejs npm yarn python
@@ -25,6 +25,11 @@ RUN mix deps.compile
 
 # build project
 RUN mix compile
+
+# test project
+ENV MIX_ENV=test
+RUN mix test
+ENV MIX_ENV=prod
 
 # build release (uncomment COPY if rel/ exists)
 # COPY rel rel
