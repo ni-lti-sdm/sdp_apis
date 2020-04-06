@@ -11,6 +11,7 @@ defmodule Apis.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug(Apis.AuthPlug)
   end
 
   scope "/", Apis do
