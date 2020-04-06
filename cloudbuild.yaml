@@ -8,6 +8,9 @@ steps:
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['apply', '-f', 'k8s-service.yml']
 
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['rollout', 'restart', 'deployment/internal-apis']
+
 # my-image is pushed to Container Registry
 images:
   - 'gcr.io/$PROJECT_ID/internal-apis'
