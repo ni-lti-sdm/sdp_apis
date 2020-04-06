@@ -4,19 +4,20 @@ metadata:
   name: internal-apis
   labels:
     app: internal-apis
-    type: back-end
+    tier: backend
 spec:
   template:
     metadata:
       name: internal-apis
       labels:
         app: internal-apis
-        type: back-end
+        tier: backend
     spec:
       containers:
       - name: internal-apis
-        image: gcr.io/data-warehouse-project-235018/internal-apis:latest
+        image: gcr.io/data-warehouse-project-235018/internal-apis:current
   replicas: 3
   selector:
     matchLabels:
-      type: back-end
+      tier: backend
+      app: internal-apis

@@ -1,6 +1,6 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/internal-apis', '-t', 'gcr.io/$PROJECT_ID/internal-apis:$SHORT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/internal-apis', '-t', 'gcr.io/$PROJECT_ID/internal-apis:current', '.']
 
 # my-image is pushed to Container Registry
 images:
