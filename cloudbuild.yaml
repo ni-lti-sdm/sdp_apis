@@ -6,20 +6,20 @@ steps:
     args: ['apply', '-f', 'k8s-deployment.yml']
     env:
       - 'CLOUDSDK_COMPUTE_REGION=us-central1'
-      - 'CLOUDSDK_COMPUTE_ZONE=c'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
       - 'CLOUDSDK_CONTAINER_CLUSTER=lti-cluster'
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['apply', '-f', 'k8s-service.yml']
     env:
       - 'CLOUDSDK_COMPUTE_REGION=us-central1'
-      - 'CLOUDSDK_COMPUTE_ZONE=c'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
       - 'CLOUDSDK_CONTAINER_CLUSTER=lti-cluster'
 
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['rollout', 'restart', 'deployment/internal-apis']
     env:
       - 'CLOUDSDK_COMPUTE_REGION=us-central1'
-      - 'CLOUDSDK_COMPUTE_ZONE=c'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
       - 'CLOUDSDK_CONTAINER_CLUSTER=lti-cluster'
 
 # my-image is pushed to Container Registry
