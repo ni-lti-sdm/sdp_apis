@@ -63,7 +63,7 @@ config :kafka_ex,
   # server.properties file.
   # In the case below you would set "advertised.host.name=localhost"
   brokers: [
-    {"kafka.lti.natinst.io", 9094}
+    {"kafka-cluster-kafka-bootstrap.strimzi.svc.cluster.local", 9094}
   ],
   #
   # OR:

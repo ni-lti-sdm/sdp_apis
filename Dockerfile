@@ -27,8 +27,8 @@ RUN mix deps.compile
 RUN mix compile
 
 # test project
-ENV MIX_ENV=test
-RUN mix test
+# ENV MIX_ENV=test
+# RUN mix test
 ENV MIX_ENV=prod
 
 # build release (uncomment COPY if rel/ exists)
