@@ -66,7 +66,7 @@ config :kafka_ex,
   #   {"kafka-cluster-kafka-bootstrap.strimzi.svc.cluster.local", 9094}
   # ],
   brokers: [
-    {"10.23.246.160", 9094}
+    {"10.23.246.160", 9092}
   ],
   #
   # OR:
