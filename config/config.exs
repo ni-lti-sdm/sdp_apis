@@ -62,8 +62,11 @@ config :kafka_ex,
   # errors when producing messages, it may be necessary to modify "advertised.host.name" in the
   # server.properties file.
   # In the case below you would set "advertised.host.name=localhost"
+  # brokers: [
+  #   {"kafka-cluster-kafka-bootstrap.strimzi.svc.cluster.local", 9094}
+  # ],
   brokers: [
-    {"kafka-cluster-kafka-bootstrap.strimzi.svc.cluster.local", 9094}
+    {"10.23.246.160", 9094}
   ],
   #
   # OR:
