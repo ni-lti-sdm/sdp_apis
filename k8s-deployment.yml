@@ -17,7 +17,7 @@ spec:
       - name: internal-apis
         image: gcr.io/data-warehouse-project-235018/internal-apis:current
         imagePullPolicy: "Always"
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       tier: backend
