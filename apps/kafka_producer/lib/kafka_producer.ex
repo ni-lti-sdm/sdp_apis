@@ -1,5 +1,10 @@
 defmodule KafkaProducer do
   def write_event(event \\ %{}) do
+    Logger.log(
+      :info,
+      "KafkaProducer.write_event() writing event to ingest-phase-1 topic #{inspect(event)}"
+    )
+
     KafkaEx.produce(%KafkaEx.Protocol.Produce.Request{
       topic: "ingest-phase-1",
       # partition: 0,
