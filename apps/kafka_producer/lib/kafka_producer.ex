@@ -1,4 +1,6 @@
 defmodule KafkaProducer do
+  require Logger
+
   def write_event(event \\ %{}) do
     Logger.log(
       :info,
