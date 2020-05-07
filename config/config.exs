@@ -95,7 +95,7 @@ config :kafka_ex,
   # be used as the timeout for work dispatched via KafkaEx.Server.call (e.g., KafkaEx.metadata).
   # In those cases, it should be considered a 'total timeout', encompassing both network calls and
   # wait time for the genservers.
-  sync_timeout: 3000,
+  sync_timeout: 10_000,
   # Supervision max_restarts - the maximum amount of restarts allowed in a time frame
   max_restarts: 10,
   # Supervision max_seconds -  the time frame in which :max_restarts applies
