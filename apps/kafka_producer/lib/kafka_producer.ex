@@ -15,5 +15,13 @@ defmodule KafkaProducer do
         %KafkaEx.Protocol.Produce.Message{value: Jason.encode!(event)}
       ]
     })
+
+    KafkaEx.produce(%KafkaEx.Protocol.Produce.Request{
+      topic: "ingest-tdr",
+      required_acks: 1,
+      messages: [
+        %KafkaEx.Protocol.Produce.Message{value: Jason.encode!(event)}
+      ]
+    })
   end
 end
