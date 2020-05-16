@@ -8,26 +8,32 @@ defmodule KafkaProducer do
     )
 
     spawn(fn ->
-      KafkaEx.produce(%KafkaEx.Protocol.Produce.Request{
-        topic: "ingest-phase-1",
-        # partition: 0,
-        required_acks: 1,
-        messages: [
-          %KafkaEx.Protocol.Produce.Message{value: Jason.encode!(event)}
-        ],
-        timeout: 10_000
-      })
+      KafkaEx.produce(
+        %KafkaEx.Protocol.Produce.Request{
+          topic: "ingest-phase-1",
+          # partition: 0,
+          required_acks: 1,
+          messages: [
+            %KafkaEx.Protocol.Produce.Message{value: Jason.encode!(event)}
+          ],
+          timeout: 10_000
+        },
+        timeout: 30_000
+      )
     end)
 
     spawn(fn ->
-      KafkaEx.produce(%KafkaEx.Protocol.Produce.Request{
-        topic: "ingest-tdr",
-        required_acks: 1,
-        messages: [
-          %KafkaEx.Protocol.Produce.Message{value: Jason.encode!(event)}
-        ],
-        timeout: 10_000
-      })
+      KafkaEx.produce(
+        %KafkaEx.Protocol.Produce.Request{
+          topic: "ingest-tdr",
+          required_acks: 1,
+          messages: [
+            %KafkaEx.Protocol.Produce.Message{value: Jason.encode!(event)}
+          ],
+          timeout: 10_000
+        },
+        timeout: 30_000
+      )
     end)
   end
 end
