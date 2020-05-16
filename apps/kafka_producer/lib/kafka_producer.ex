@@ -14,7 +14,8 @@ defmodule KafkaProducer do
         required_acks: 1,
         messages: [
           %KafkaEx.Protocol.Produce.Message{value: Jason.encode!(event)}
-        ]
+        ],
+        timeout: 10_000
       })
     end)
 
@@ -24,7 +25,8 @@ defmodule KafkaProducer do
         required_acks: 1,
         messages: [
           %KafkaEx.Protocol.Produce.Message{value: Jason.encode!(event)}
-        ]
+        ],
+        timeout: 10_000
       })
     end)
   end
