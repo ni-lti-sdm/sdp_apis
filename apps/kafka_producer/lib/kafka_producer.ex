@@ -16,9 +16,9 @@ defmodule KafkaProducer do
           messages: [
             %KafkaEx.Protocol.Produce.Message{value: Jason.encode!(event)}
           ],
-          timeout: 10_000
+          timeout: 60_000
         },
-        timeout: 30_000
+        timeout: 120_000
       )
     end)
 
@@ -30,9 +30,9 @@ defmodule KafkaProducer do
           messages: [
             %KafkaEx.Protocol.Produce.Message{value: Jason.encode!(event)}
           ],
-          timeout: 10_000
+          timeout: 60_000
         },
-        timeout: 30_000
+        timeout: 120_000
       )
     end)
   end
