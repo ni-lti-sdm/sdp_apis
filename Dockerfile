@@ -37,7 +37,7 @@ RUN mix release
 
 # prepare release image
 FROM alpine:3.9 AS app
-RUN apk add --update bash openssl
+RUN apk add --update bash openssl curl
 
 RUN mkdir /app
 WORKDIR /app
