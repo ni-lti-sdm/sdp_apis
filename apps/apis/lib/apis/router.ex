@@ -24,5 +24,6 @@ defmodule Apis.Router do
     pipe_through :api
 
     post "/new-file", NewFilesController, :new_file
+    post "/batch-process/:bq_table_root", BatchCommandController, :batch_process
   end
 end

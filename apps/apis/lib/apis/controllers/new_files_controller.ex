@@ -7,26 +7,29 @@ defmodule Apis.NewFilesController do
   @sleep_between_tries_msecs 500
 
   def new_file(conn, params) do
-    Logger.log(:info, "POST New File: #{inspect params}")
+    Logger.log(:info, "POST New File: #{inspect(params)}")
 
-    write_event(params)
+    write_file_arrival_event(params)
     json(conn, %{result: :ok})
   end
 
-  defp write_event(params), do: write_event(params, @max_retries, "")
+  defp write_file_arrival_event(params), do: write_file_arrival_event(params, @max_retries, "")
 
-  defp write_event(params, 0, last_error) do
-    Logger.error("write_event: max_retries exceeded.  params: #{inspect params}, last_error: #{inspect last_error}")
+  defp write_file_arrival_event(params, 0, last_error) do
+    Logger.error(
+      "write_file_arrival_event: max_retries exceeded.  params: #{inspect(params)}, last_error: #{
+        inspect(last_error)
+      }"
+    )
   end
 
-  defp write_event(params, count, _last_error) do
+  defp write_file_arrival_event(params, count, _last_error) do
     try do
-      KafkaProducer.write_event(params)
+      KafkaProducer.write_file_arrival_event(params)
     rescue
       error ->
         Process.sleep(@sleep_between_tries_msecs)
-        write_event(params, count - 1, error)
+        write_file_arrival_event(params, count - 1, error)
     end
   end
-
 end
