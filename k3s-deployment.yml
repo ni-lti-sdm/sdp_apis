@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: internal-apis
-        image: gcr.io/data-warehouse-project-235018/internal-apis:current
+        image: k3pocregistry.azurecr.io/sdp_apis:current
         imagePullPolicy: "Always"
   replicas: 5
   revisionHistoryLimit: 2
