@@ -15,9 +15,11 @@ spec:
     spec:
       containers:
       - name: internal-apis
-        image: k3pocregistry.azurecr.io/sdp_apis:current
+        image: k3pocregistry.azurecr.io/sdp_apis:latest
         imagePullPolicy: "Always"
-  replicas: 5
+      imagePullSecrets:
+        - name: acr-secret
+  replicas: 1
   revisionHistoryLimit: 2
   selector:
     matchLabels:
