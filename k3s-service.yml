@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: internal-apis
 spec:
+  type: NodePort
   selector:
     app: internal-apis
     tier: backend
   ports:
     - port: 8080
       targetPort: 4000
-  type: LoadBalancer
