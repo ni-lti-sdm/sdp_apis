@@ -8,5 +8,5 @@ spec:
     app: internal-apis
     tier: backend
   ports:
-    - port: 8080
+    - port: 4000
       targetPort: 4000
