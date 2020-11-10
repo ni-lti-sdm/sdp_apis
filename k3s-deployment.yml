@@ -13,12 +13,17 @@ spec:
         app: internal-apis
         tier: backend
     spec:
+      imagePullSecrets:
+        - name: acr-secret
       containers:
       - name: internal-apis
         image: k3pocregistry.azurecr.io/sdp_apis:latest
         imagePullPolicy: "Always"
-      imagePullSecrets:
-        - name: acr-secret
+        env:
+          - name: "KAFKA_EX_HOST"
+            value: "kafka-cluster-kafka-bootstrap.strimzi.svc.cluster.local"
+          - name: "KAFKA_EX_PORT"
+            value: "9093"
   replicas: 1
   revisionHistoryLimit: 2
   selector:

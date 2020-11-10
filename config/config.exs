@@ -65,12 +65,13 @@ config :kafka_ex,
   # brokers: [
   #   {"kafka-cluster-kafka-bootstrap.strimzi.svc.cluster.local", 9094}
   # ],
+  brokers: {ElixirLib.KafkaEx.Brokers, :brokers, []},
   # brokers: [
   #   {"10.23.246.160", 9092}
   # ],
-  brokers: [
-    {"34.69.58.165", 9094}
-  ],
+  # brokers: [
+  #   {"34.69.58.165", 9094}
+  # ],
   #
   # OR:
   # brokers: "localhost:9092,localhost:9093,localhost:9094"
